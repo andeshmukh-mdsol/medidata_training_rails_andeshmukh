@@ -1,0 +1,23 @@
+<h1> Index Action of Studies Controller </h1>
+
+<br>
+<table>
+    <tr>
+        <th> Name </th>
+        <th> Age Limit </th>
+        <th> Drug </th>
+        <th> Phase </th>
+        <th> Symptoms </th>
+        <th> Study group Id </th>
+    </tr>
+    <% @studies.each do |s| %>
+        <tr>
+            <td><%= s.name %></td>
+            <td><%= s.age_limit %></td>
+            <td><%= s.drug %></td>
+            <td><%= s.phase %></td>
+            <td><%= s.symptoms %></td>
+            <td><%= s.study_group_id %>
+        </tr>
+    <% end %>
+</table>
