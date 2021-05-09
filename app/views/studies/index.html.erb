@@ -1,5 +1,5 @@
-<h1> Index Action of Studies Controller </h1>
-
+<h1> Studies</h1>
+<%= link_to 'Add Study', new_study_group_study_path(params[:study_group_id]) %>
 <br>
 <table>
     <tr>
@@ -9,15 +9,10 @@
         <th> Phase </th>
         <th> Symptoms </th>
         <th> Study group Id </th>
+        <th> Actions </th>
     </tr>
     <% @studies.each do |s| %>
-        <tr>
-            <td><%= s.name %></td>
-            <td><%= s.age_limit %></td>
-            <td><%= s.drug %></td>
-            <td><%= s.phase %></td>
-            <td><%= s.symptoms %></td>
-            <td><%= s.study_group_id %>
-        </tr>
+        <%= render partial: 'study', locals:{s:s} %>
     <% end %>
-</table>
+</table><br>
+<%= link_to '<< Back to Study Groups', study_groups_path %>

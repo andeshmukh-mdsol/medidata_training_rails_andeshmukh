@@ -1,0 +1,13 @@
+<h1> Edit study group </h1>
+<% if @study_group.errors.full_messages.present? %>
+    <% @study_group.errors.full_messages.each do |e| %>
+        <ul>
+            <li><%= e %>
+        </ul>
+    <% end %>
+<% end %>
+
+<%= form_with(model: @study_group, url:study_group_path(params[:id]), locals:true) do |sg| %>
+    <%= render partial: 'study_group_edit', locals:{sg:sg}%>
+<% end %><br>
+<%= link_to '<< Back to Study groups', study_groups_path %>

@@ -1,0 +1,28 @@
+    <div>
+        <%= f.label 'Name' %>
+        <%= f.text_field :name %>
+
+    </div><br>
+    <div>
+        <%= f.label 'Age Limit'%>
+        <%= f.text_field :age_limit %>
+
+    </div><br>
+    <div>
+        <%= f.label 'Drug' %>
+        <%= f.text_field :drug %>
+
+    </div><br>
+    <div>
+        <%= f.label 'Phase' %>
+        <%= f.text_field :phase %>
+
+    </div><br>
+    <div>
+        <%= f.label 'Symptoms' %>
+        <%= f.text_field :symptoms %>
+
+    </div><br>
+    <%= f.hidden_field(:study_group_id, value:params[:study_group_id]) %>
+    <%= f.submit %>
+  

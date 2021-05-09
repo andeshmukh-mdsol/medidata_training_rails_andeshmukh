@@ -1,35 +1,42 @@
 class StudiesController < ApplicationController
     skip_before_action :verify_authenticity_token #for skipping authenticity while calling from terminal or postman tool
-    
+    require 'pry'
     # before_action :verify_authenticity_token
     # after_action :demo_after_action only:[:index]
     # around_action :demo_around_action
 
     def new
+        @study = Study.new()
     end
 
-    
     def create 
         @study = Study.new(study_params)
         if @study.save
-            render json: {notice: "Study created successfully!"}
+            redirect_to(study_group_studies_path(params[:study_group_id]))
         else
-            render json: {error: "Could not create study!"}
+            render('new')
         end
     end
 
     def index 
         p "Index method called......."
-        @studies = Study.all
+        @studies = Study.where(study_group_id:params[:study_group_id])
         # render json: @studies
     end
 
+    def show 
+    end
+
+    def edit
+        @study = Study.find(params[:id])
+    end
+    
     def update 
         @study = Study.find(params[:id])
 
         if @study 
             @study.update(study_params)
-            render json:{notice: "Study updated successfully"}
+            redirect_to(study_group_studies_path(params[:study_group_id]))
         else
             render json:{error: "could not find the study"}
         end
@@ -40,7 +47,7 @@ class StudiesController < ApplicationController
 
         if @study
             @study.destroy
-            render json:{notice: "Study deleted successfully"}
+            redirect_to(study_group_studies_path(params[:study_group_id]))
         else
             render json:{error: "could not find the study"}
         end

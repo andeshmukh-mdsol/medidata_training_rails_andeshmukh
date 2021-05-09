@@ -1,0 +1,15 @@
+<h2 style="border-bottom: 1px solid">Create a study</h2>
+
+<% if @study.errors.full_messages.present? %>
+    <% @study.errors.full_messages.each do |e| %>
+        <ul>
+            <li><%= e %></li>
+        </ul>
+    <% end %>
+<% end %>
+
+<%= form_with(model: @study, url:study_group_studies_path(params[:study_group_id]), locals: true) do |f| %>
+    <%= render partial: 'study_edit', locals:{f:f} %>
+<% end %><br>
+
+<%= link_to '<< Back to Studies', study_group_studies_path(params[:study_group_id]) %>
