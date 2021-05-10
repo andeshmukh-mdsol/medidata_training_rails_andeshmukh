@@ -6,6 +6,7 @@ ruby '3.0.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.1'
 gem 'active_model_serializers'
+gem 'delayed_job_active_record'
 gem 'sidekiq'
 # Use mysql as the database for Active Record
 gem 'mysql2', '~> 0.5'
