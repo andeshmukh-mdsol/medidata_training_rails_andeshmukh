@@ -7,7 +7,8 @@ class Study < ApplicationRecord
 
     belongs_to :study_group
     has_many :sites
-    has_and_belongs_to_many :subjects
+    has_many :enrollments
+    has_many :subjects, through: :enrollments
     has_one :side_effect
 
 end
