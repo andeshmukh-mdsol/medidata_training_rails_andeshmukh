@@ -1,0 +1,5 @@
+<h1>Add a new Subject</h1><br>
+<%= form_with(model: @subject, url:subjects_path) do |f| %>
+    <%= render partial: 'subject_new', locals:{f:f} %>
+<% end %><br><br>
+<%= link_to '<< Back to Subjects list', subjects_path %>

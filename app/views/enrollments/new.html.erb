@@ -1,0 +1,20 @@
+<% if flash[:notice] %>
+    <b><u><%= flash[:notice] %></u></b>
+<% end %>
+<h1> Enroll a subject into a study</h1>
+<br>
+
+<%= form_with(model: @enrollment) do |f| %>
+    <div>
+        <%= f.label 'Subject: ' %>
+        <%= f.select(:subject_id, @subjects.empty?? options_for_select([['No new subjects found',-1]], selected:-1, disabled:-1 ) : options_for_select(@subjects.map{|x| [x.name, x.id]}.unshift(['-- Select a Subject --',0]), selected:0, disabled:0)) %>
+    </div><br>
+    <div>
+        <%= f.label 'Study: ' %>
+        <%= f.select(:study_id, @studies.map{|x| [x.name, x.id]}) %>
+    </div><br>
+    <%= f.submit(disabled: @subjects.empty?) %>
+<% end %><br><br>
+
+<%= link_to '<< Back to Main Menu', root_path %>
+

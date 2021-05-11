@@ -10,5 +10,6 @@ class Study < ApplicationRecord
     has_many :enrollments
     has_many :subjects, through: :enrollments
     has_one :side_effect
+    has_one_attached :my_image
 
 end

@@ -10,10 +10,13 @@
         <th> Phase </th>
         <th> Symptoms </th>
         <th> Study group Id </th>
+        <th> Image </th>
         <th> Actions </th>
     </tr>
-    <% @studies.each do |s| %>
-        <%= render partial: 'study', locals:{s:s} %>
+    <%= cache @studies do %>
+        <% @studies.each do |s| %>
+            <%= render partial: 'study', locals:{s:s} %>
+        <% end %>
     <% end %>
 </table><br>
 <%= link_to '<< Back to Study Groups', study_groups_path %>

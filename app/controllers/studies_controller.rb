@@ -12,6 +12,8 @@ class StudiesController < ApplicationController
     def create 
         @study = Study.new(study_params)
         if @study.save
+            # StudyMailer.with(study: @study).success_email.deliver_now
+            StudyMailer.with(study: @study).delay.success_email
             redirect_to(study_group_studies_path(params[:study_group_id]))
         else
             render('new')
@@ -61,7 +63,7 @@ class StudiesController < ApplicationController
     private
 
     def study_params
-        params.require(:study).permit(:name, :age_limit, :drug, :phase, :symptoms, :study_group_id)
+        params.require(:study).permit(:name, :age_limit, :drug, :phase, :symptoms, :study_group_id, :my_image)
     end
 
     def demo_after_action

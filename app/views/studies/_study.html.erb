@@ -6,6 +6,7 @@
             <td><%= s.phase %></td>
             <td><%= s.symptoms %></td>
             <td><%= s.study_group_id %></td>
+            <td><%= image_tag s.my_image.variant(resize: '100x100') if s.my_image.attached? %></td>
             <td>
                 <%= link_to 'Edit', edit_study_group_study_path(params[:study_group_id],s) %> | 
                 <%= link_to 'Delete', study_group_study_path(params[:study_group_id],s), method: :delete, data:{confirm: 'Are you sure you want to delete this study?'} %>

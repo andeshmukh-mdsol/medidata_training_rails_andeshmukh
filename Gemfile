@@ -8,6 +8,7 @@ gem 'rails', '~> 6.1.3', '>= 6.1.3.1'
 gem 'active_model_serializers'
 gem 'delayed_job_active_record'
 gem 'sidekiq'
+gem 'image_processing'
 # Use mysql as the database for Active Record
 gem 'mysql2', '~> 0.5'
 # Use Puma as the app server

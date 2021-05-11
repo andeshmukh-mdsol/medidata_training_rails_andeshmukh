@@ -23,6 +23,11 @@
         <%= f.text_field :symptoms %>
 
     </div><br>
+    <div>
+        <%= f.label 'image' %>
+        <%= f.file_field :my_image %>
+
+    </div><br>
     <%= f.hidden_field(:study_group_id, value:params[:study_group_id]) %>
     <%= f.submit %>
   
