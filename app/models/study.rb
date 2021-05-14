@@ -11,5 +11,15 @@ class Study < ApplicationRecord
     has_many :subjects, through: :enrollments
     has_one :side_effect
     has_one_attached :my_image
+    after_save :success_study
+
+    scope :usable_drugs, -> { where('phase>=4')}
+    scope :under_trials, -> { where('phase<4')}
+
+    def success_study
+        StudyMailer.delay.success_email(self)
+    end
+
+    handle_asynchronously :success_study, priority:0
 
 end

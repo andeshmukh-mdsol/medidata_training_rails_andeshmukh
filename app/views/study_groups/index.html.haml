@@ -1,0 +1,13 @@
+%h1 Study Groups
+%br/
+= link_to 'Add study group', new_study_group_path
+%table
+  %tr
+    %th ID
+    %th Name
+    %th Actions
+  = cache @study_groups do
+    - @study_groups.each do |s|
+      = render partial: 'study_group', locals:{s:s}
+%br/
+= link_to '<< Back to Main Menu', root_path

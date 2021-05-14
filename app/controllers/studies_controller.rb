@@ -12,8 +12,6 @@ class StudiesController < ApplicationController
     def create 
         @study = Study.new(study_params)
         if @study.save
-            # StudyMailer.with(study: @study).success_email.deliver_now
-            StudyMailer.with(study: @study).delay.success_email
             redirect_to(study_group_studies_path(params[:study_group_id]))
         else
             render('new')

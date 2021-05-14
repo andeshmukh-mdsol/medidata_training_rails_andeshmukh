@@ -13,6 +13,10 @@
         <%= f.label 'Study: ' %>
         <%= f.select(:study_id, @studies.map{|x| [x.name, x.id]}) %>
     </div><br>
+    <div>
+        <%= f.label 'Send auto invitation?: ' %>
+        <%= f.select(:auto_invitation, options_for_select([['false',0],['true',1]],selected:1)) %>
+    </div><br>
     <%= f.submit(disabled: @subjects.empty?) %>
 <% end %><br><br>
 

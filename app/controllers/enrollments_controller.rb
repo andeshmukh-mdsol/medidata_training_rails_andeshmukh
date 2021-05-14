@@ -9,11 +9,9 @@ class EnrollmentsController < ApplicationController
   end
 
   def create 
-    
     @enrollment = Enrollment.new(strong_params)
     if @enrollment.save 
       flash[:notice] = 'Enrollment done successfully'
-      EnrollmentMailer.with(enrollment: @enrollment).delay.success_enrollment
       redirect_to(new_enrollment_path)
     else
       flash[:notice] = 'Enrollment failed!'
@@ -24,7 +22,7 @@ class EnrollmentsController < ApplicationController
   private 
 
   def strong_params
-    params.require(:enrollment).permit(:study_id, :subject_id)
+    params.require(:enrollment).permit(:study_id, :subject_id, :auto_invitation)
   end
 
 end
