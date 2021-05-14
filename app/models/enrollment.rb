@@ -33,3 +33,4 @@ class Enrollment < ApplicationRecord
   # handle_asynchronously :audit_new, priority:-5
   
 end
+
