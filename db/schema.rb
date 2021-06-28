@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_14_115606) do
+ActiveRecord::Schema.define(version: 2021_06_10_104120) do
 
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -74,6 +74,14 @@ ActiveRecord::Schema.define(version: 2021_05_14_115606) do
     t.index ["subject_id"], name: "index_enrollments_on_subject_id"
   end
 
+  create_table "side_effects", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "study_id"
+    t.text "side_effect"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["study_id"], name: "index_side_effects_on_study_id"
+  end
+
   create_table "sites", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.bigint "study_id"
@@ -118,5 +126,6 @@ ActiveRecord::Schema.define(version: 2021_05_14_115606) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "enrollments", "studies"
   add_foreign_key "enrollments", "subjects"
+  add_foreign_key "side_effects", "studies"
   add_foreign_key "sites", "studies"
 end

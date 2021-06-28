@@ -1,6 +1,7 @@
 class Enrollment < ApplicationRecord
   belongs_to :study
   belongs_to :subject
+  validates  :subject_id, uniqueness: true
   # sidekiq
   after_save :audit_log, :enrollment_mail #, :audit_new
 
